@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ReceitaWS.Models.Entities.Empresa>
+
+@{
+    ViewBag.Title = "Empresas Consultadas na RF";
+}
+
+<h3>Empresas Consultadas na RF</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Abertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ultima_Atualizacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Natureza_Juridica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complemento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Municipio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Abertura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ultima_Atualizacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Natureza_Juridica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Logradouro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Complemento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Municipio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+    </tr>
+}
+
+</table>

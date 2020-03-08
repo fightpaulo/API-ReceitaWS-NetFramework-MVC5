@@ -53,5 +53,27 @@ namespace ReceitaWS.Models.Entities
         [Display(Name = "E-mail ")]
         public string Email { get; set; }
 
+        public Empresa()
+        {
+
+        }
+
+        public Empresa(string[] empresaDoArquivo)
+        {
+            Abertura = empresaDoArquivo[0];
+            Cnpj = empresaDoArquivo[1];
+            Ultima_Atualizacao = (DateTime?)Convert.ToDateTime(empresaDoArquivo[2]);
+            Nome = empresaDoArquivo[3];
+            Natureza_Juridica = empresaDoArquivo[6];
+            Logradouro = empresaDoArquivo[7];
+            Numero = empresaDoArquivo[8];
+            Complemento = empresaDoArquivo[9];
+            Bairro = empresaDoArquivo[10];
+            Cep = empresaDoArquivo[11];
+            Municipio = empresaDoArquivo[12];
+            Uf = empresaDoArquivo[13];
+            Email = empresaDoArquivo[14];
+        }
+
     }
 }

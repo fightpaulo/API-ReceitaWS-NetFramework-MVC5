@@ -29,6 +29,8 @@ namespace ReceitaWS.Models.ApiHelper
                 {
                     responseBody = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
+
+
                     if (responseBody.Contains("CNPJ inválido"))
                         throw new Exception();
                     

@@ -51,12 +51,21 @@ namespace ReceitaWS.Controllers
             catch (Exception ex)
             {
                 string erro = ex.Message;
+
                 return RedirectToAction("Index", new { erro } );
             } 
 
             return View(empresaViewModel);
         }
 
-        
+        public ActionResult ListarConsultas()
+        {
+            string nomeDoArquivo = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) 
+                + "\\Empresas_Consultadas_RF.csv";
+
+            List<Empresa> empresas = FileHelper.GetInfoDoArquivo(nomeDoArquivo);
+
+            return View("ConsultasRealizadas", empresas);
+        }
     }
 }

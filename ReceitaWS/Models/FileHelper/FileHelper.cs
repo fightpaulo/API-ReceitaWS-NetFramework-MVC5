@@ -14,11 +14,11 @@ namespace ReceitaWS.Models.FileHelper
         public static void CriaOuAddAoArquivo(Empresa empresa, string caminho)
         {
             string nomeArquivo = "Empresas_Consultadas_RF.csv";
-            string fileNameCompleto = caminho + "\\" + nomeArquivo;
+            string nomeCompletoArquivo = caminho + "\\" + nomeArquivo;
            
-            if (!File.Exists(fileNameCompleto))
+            if (!File.Exists(nomeCompletoArquivo))
             {
-                using (StreamWriter streamWriter = new StreamWriter(fileNameCompleto, true, Encoding.UTF8))
+                using (StreamWriter streamWriter = new StreamWriter(nomeCompletoArquivo, true, Encoding.UTF8))
                 {
                     streamWriter.Write("Data de Abertura");
                     streamWriter.Write(";CNPJ");
@@ -41,7 +41,7 @@ namespace ReceitaWS.Models.FileHelper
                 }
             }
 
-            using (StreamWriter streamWriter = new StreamWriter(fileNameCompleto, true, Encoding.UTF8))
+            using (StreamWriter streamWriter = new StreamWriter(nomeCompletoArquivo, true, Encoding.UTF8))
             {
                 streamWriter.Write(empresa.Abertura);
                 streamWriter.Write(";" + empresa.Cnpj);
@@ -89,6 +89,37 @@ namespace ReceitaWS.Models.FileHelper
 
                 streamWriter.WriteLine();
             }
+        }
+
+        public static List<Empresa> GetInfoDoArquivo(string nomeDoArquivo)
+        {
+            Empresa empresa = null;
+            List<Empresa> empresas = new List<Empresa>();
+
+            if (File.Exists(nomeDoArquivo))
+            {
+                using (StreamReader sr = File.OpenText(nomeDoArquivo))
+                {
+                    List<string> linhas = new List<string>();
+
+                    while (!sr.EndOfStream)
+                    {
+                        linhas.Add(sr.ReadLine());
+                    }
+
+                    // Remove o cabeçalho
+                    linhas.RemoveAt(0);
+
+                    foreach (string linha in linhas)
+                    {
+                        string[] empresaLida = linha.Split(';');
+                        empresa = new Empresa(empresaLida);
+                        empresas.Add(empresa);
+                    }
+                }
+            }
+
+            return empresas;
         }
     }
 }
